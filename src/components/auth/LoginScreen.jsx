@@ -6,7 +6,7 @@ export const LoginScreen = () => {
     <>
       <h3 className='auth__title'>Login</h3>
 
-      <form>
+      <form className='mt-5'>
         <input
           type='text'
           placeholder='Your email...'
@@ -21,7 +21,7 @@ export const LoginScreen = () => {
           className='auth__input'
         />
 
-        <button type='submit' className='btn btn-primary btn-block'>
+        <button type='submit' className='btn btn-primary btn-block mt-5'>
           Log In
         </button>
         <hr />
