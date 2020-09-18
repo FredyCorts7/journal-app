@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { login, startLoginEmailPassword } from '../../actions/auth';
+import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = () => {
@@ -18,6 +18,10 @@ export const LoginScreen = () => {
     e.preventDefault();
 
     dispatch(startLoginEmailPassword('cami@com.co', 'hardpass'));
+  };
+
+  const handleAuthGoogle = () => {
+    dispatch(startGoogleLogin());
   };
 
   return (
@@ -49,7 +53,7 @@ export const LoginScreen = () => {
 
         <div className='auth__sso'>
           <p>Single Sign On</p>
-          <div className='google-btn'>
+          <div className='google-btn' onClick={handleAuthGoogle}>
             <div className='google-icon-wrapper'>
               <img
                 className='google-icon'
