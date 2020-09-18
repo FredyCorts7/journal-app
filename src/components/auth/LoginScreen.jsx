@@ -24,7 +24,6 @@ export const LoginScreen = () => {
         <button type='submit' className='btn btn-primary btn-block mt-5'>
           Log In
         </button>
-        <hr />
 
         <div className='auth__sso'>
           <p>Single Sign On</p>
