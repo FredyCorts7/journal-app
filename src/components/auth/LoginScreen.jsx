@@ -17,7 +17,7 @@ export const LoginScreen = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    dispatch(startLoginEmailPassword('cami@com.co', 'hardpass'));
+    dispatch(startLoginEmailPassword(email, password));
   };
 
   const handleAuthGoogle = () => {
@@ -38,6 +38,7 @@ export const LoginScreen = () => {
           value={email}
           onChange={handleInputChange}
         />
+
         <input
           type='password'
           placeholder='Your password...'
