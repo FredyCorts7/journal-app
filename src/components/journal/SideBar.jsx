@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { startLogOut } from '../../actions/auth';
+import { startNewNote } from '../../actions/notes';
 import { JournalEntries } from './JournalEntries';
 
 export const SideBar = () => {
@@ -9,6 +10,10 @@ export const SideBar = () => {
 
   const handleLogOut = () => {
     dispatch(startLogOut());
+  };
+
+  const handleAddEntry = () => {
+    dispatch(startNewNote());
   };
 
   return (
@@ -24,7 +29,7 @@ export const SideBar = () => {
         </button>
       </div>
 
-      <div className='journal__new-entry pointer'>
+      <div className='journal__new-entry pointer' onClick={handleAddEntry}>
         <i className='far fa-calendar-plus fa-4x'></i>
         <p className='mt-5'>New Entry</p>
       </div>
