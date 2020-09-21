@@ -73,8 +73,20 @@ export const startUploading = (file) => {
   return async (dispatch, getState) => {
     const { active: note } = getState().notes;
 
-    const fileUrl = await fileUpload(file);
+    Swal.fire({
+      title: 'Uploading...',
+      text: 'Please wait...',
+      allowOutsideClick: false,
+      onBeforeOpen: () => {
+        Swal.showLoading();
+      },
+    });
 
-    console.log(fileUrl);
+    const fileUrl = await fileUpload(file);
+    note.url = fileUrl;
+
+    dispatch(startSaveNote(note));
+
+    Swal.close();
   };
 };
