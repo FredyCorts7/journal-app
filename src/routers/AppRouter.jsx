@@ -5,6 +5,7 @@ import { firebase } from '../firebase/config';
 import { JournalScreen } from '../components/journal/JournalScreen';
 import { AuthRouter } from './AuthRouter';
 import { login } from '../actions/auth';
+import { startLoadingNotes } from '../actions/notes';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 
@@ -15,10 +16,12 @@ export const AppRouter = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(async (user) => {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName));
         setIsAuthenticated(true);
+
+        dispatch(startLoadingNotes(user.uid));
       } else {
         setIsAuthenticated(false);
       }
